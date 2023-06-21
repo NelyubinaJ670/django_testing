@@ -1,9 +1,9 @@
-from datetime import date
-
 import pytest
 
-from django.urls import reverse
+from datetime import date
+
 from django.conf import settings
+from django.urls import reverse
 from django.utils import timezone
 
 
