@@ -1,5 +1,5 @@
 import pytest
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 from django.utils import timezone
 from django.conf import settings
@@ -13,7 +13,7 @@ def author(django_user_model):
 
 
 @pytest.fixture
-def author_client(author, client):
+def author_client(client, author):
     client.force_login(author)
     return client
 
@@ -53,7 +53,7 @@ def add_news():
         News(
             title=f'Заголовок новости {i}',
             text='Текст',
-            date=datetime.today() - timedelta(days=i)
+            date=timezone.now() - timedelta(days=i)
         )
         for i in range(settings.NEWS_COUNT_ON_HOME_PAGE + 1)
     )
